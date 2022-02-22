@@ -26,7 +26,7 @@ COPY test ./test
 
 
 # RUN UNIT TESTS
-RUN au test
+#RUN au test
 
 
 # build

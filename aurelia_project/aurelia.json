@@ -21,7 +21,7 @@
   },
   "markupProcessor": {
     "source": [
-      "src/**/*.html"
+      "src/**/*.{html,yaml}"
     ]
   },
   "cssProcessor": {
