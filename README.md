@@ -1,8 +1,15 @@
-# `halloid-aurelia-mdc-template`
+# halloid-aurelia-mdc-template
 
 This project is bootstrapped by [aurelia-cli](https://github.com/aurelia/cli).
 
 For more information, go to https://aurelia.io/docs/cli/cli-bundler
+
+## Material Web Components
+
+This projects uses 
+[Material Web Components](https://material-components.github.io/material-components-web-catalog/#/) as 
+template standard for HalloID platforms. The integration is made with the library 
+[Aurelia MDC](https://aurelia-ui-toolkits.github.io/aurelia-mdc-web/#/). 
 
 ## Run dev app
 
@@ -41,3 +48,8 @@ if you want to bring up an instance on your machine run:
 to stop the previously started instance:
 
 `yarn docker:stop` or `npm run docker:stop`
+
+## Creating new Projects
+
+This project is configured to work with Aurelia MDC plugin, so is recommended to fork the current repository
+and start creating the new web application from this template to avoid re-configure the plugin.
