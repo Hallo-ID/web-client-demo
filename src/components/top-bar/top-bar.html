@@ -1,0 +1,50 @@
+<template>
+  <require from="./top-bar.css"></require>
+  <mdc-top-app-bar style="position: unset" class="demo-top-app-bar-with-tabs">
+    <mdc-top-app-bar-row>
+      <mdc-top-app-bar-section align="start">
+        <button mdc-top-app-bar-nav-icon click.delegate="drawer.open = !drawer.open">
+          <mdc-icon>menu</mdc-icon>
+        </button>
+        <div mdc-headline5>HalloID</div>
+      </mdc-top-app-bar-section>
+      <mdc-top-app-bar-section end>
+        <mdc-icon mdc-top-app-bar-action-item>search</mdc-icon>
+        <mdc-icon mdc-top-app-bar-action-item>notifications_none</mdc-icon>
+        <mdc-icon mdc-top-app-bar-action-item click.delegate="profileMenu.open = !profileMenu.open">more_vert</mdc-icon>
+        <div mdc-menu-surface-anchor ref="menuAnchor">
+          <mdc-menu view-model.ref="profileMenu" anchor.bind="menuAnchor">
+            <mdc-list>
+              <mdc-list-item>My Profile</mdc-list-item>
+              <mdc-list-divider></mdc-list-divider>
+              <mdc-list-item>Sign out</mdc-list-item>
+            </mdc-list>
+          </mdc-menu>
+        </div>
+      </mdc-top-app-bar-section>
+    </mdc-top-app-bar-row>
+    <mdc-top-app-bar-row>
+      <mdc-top-app-bar-section>
+        <mdc-tab-bar focus-on-activate.bind="false">
+          <mdc-tab repeat.for="tab of tabs" label.bind="tab.label" icon.bind="tab.icon"></mdc-tab>
+        </mdc-tab-bar>
+      </mdc-top-app-bar-section>
+    </mdc-top-app-bar-row>
+  </mdc-top-app-bar>
+
+  <div class="demo-drawer-app-content">
+    <mdc-drawer type="dismissible" view-model.ref="drawer">
+      <mdc-drawer-header title="Drawer Title" subtitle="Subtitle"></mdc-drawer-header>
+      <mdc-drawer-content>
+        <mdc-list>
+          <mdc-list-item repeat.for="link of links">
+            <mdc-icon mdc-list-item-leading>${link.icon}</mdc-icon>${link.label}
+          </mdc-list-item>
+        </mdc-list>
+      </mdc-drawer-content>
+    </mdc-drawer>
+    <mdc-drawer-app-content style="display: block; padding: 16px; height: 400px;">
+      <slot></slot>
+    </mdc-drawer-app-content>
+  </div>
+</template>

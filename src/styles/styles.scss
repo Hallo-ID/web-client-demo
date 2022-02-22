@@ -1,0 +1,14 @@
+@use '@material/theme' with (
+  $primary: #6200ee,
+  $secondary: #faab1a,
+  $background: #fff,
+);
+
+// Custom imports
+@use "top-bar";
+
+// MDC Typography
+@use '@material/typography/mdc-typography';
+@use '@material/typography';
+
+
