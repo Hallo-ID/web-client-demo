@@ -1,5 +1,5 @@
 {
-  "name": "halloid-aurelia-mdc-template",
+  "name": "Web Client",
   "type": "project:application",
   "paths": {
     "root": "src",

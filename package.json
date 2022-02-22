@@ -1,5 +1,5 @@
 {
-  "name": "halloid-aurelia-mdc-template",
+  "name": "web-client",
   "description": "An Aurelia client application.",
   "version": "0.1.0",
   "repository": {
@@ -62,7 +62,7 @@
     "build": "au build --env prod",
     "start": "au run",
     "test": "au test",
-    "docker:build": "docker build -t halloid-aurelia-mdc-template:0.1.0 -t halloid-aurelia-mdc-template:latest .",
+    "docker:build": "docker build -t web-client:0.1.0 -t web-client:latest .",
     "docker:start": "docker-compose up -d",
     "docker:stop": "docker-compose down"
   },
