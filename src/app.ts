@@ -5,6 +5,7 @@ export class App {
     this.router = router;
     config.title = 'HalloID';
     config.map([
+      {route: 'login', name: 'login', moduleId: 'view/login/login', title: 'Login'},
       {route: ['', 'home'], name: 'home', moduleId: 'view/hello-world/hello-world'},
       // { route: 'users',            name: 'users',      moduleId: 'users/index', nav: true, title: 'Users' },
       // { route: 'users/:id/detail', name: 'userDetail', moduleId: 'users/detail' },

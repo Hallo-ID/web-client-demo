@@ -1,0 +1,110 @@
+@use "@material/theme";
+@use '@material/textfield';
+@use '@material/textfield/helper-text';
+@use '@material/textfield/icon';
+@use '@material/button';
+@use "@material/form-field/_index" as form-field;
+@use '@material/ripple/_index' as ripple;
+@use '@material/theme/color-palette' as material-color;
+@use '@material/checkbox/_index' as checkbox;
+
+
+// all styles
+@use "@aurelia-mdc-web/all";
+
+.demo-checkbox--custom-stroke-and-fill {
+  @include checkbox.container-colors(
+    $unmarked-stroke-color: #6200ee,
+    $marked-fill-color: #6200ee,
+    $generate-keyframes: false);
+}
+
+.demo-checkbox--custom-all {
+  $color: material-color.$red-500;
+
+  @include checkbox.focus-indicator-color($color);
+  @include ripple.states($color);
+  @include checkbox.container-colors(
+    $unmarked-stroke-color: $color,
+    $unmarked-fill-color: rgba($color, .25),
+    $marked-fill-color: $color,
+    $generate-keyframes: false);
+}
+
+.demo-button-ink-color {
+  @include button.container-fill-color(#6200ee);
+  @include button.icon-color(white);
+  @include button.ink-color(white);
+  @include ripple.states(orange);
+}
+
+.demo-text-field-custom-colors:not(.mdc-text-field--invalid) {
+  $idle-border: rgba(blue, .38);
+  $hover-border: rgba(blue, .6);
+  $focused-border: rgba(blue, 1);
+
+  @include textfield.bottom-line-color($idle-border);
+  @include textfield.hover-bottom-line-color($hover-border);
+  @include textfield.line-ripple-color($focused-border);
+  @include textfield.ink-color(black);
+  @include textfield.label-color(rgba(blue, .5));
+  @include textfield.outline-color($idle-border);
+  @include textfield.hover-outline-color($hover-border);
+  @include textfield.focused-outline-color($focused-border);
+  @include helper-text.helper-text-color($idle-border);
+  @include icon.leading-icon-color($hover-border);
+
+  &.mdc-text-field--focused {
+    @include textfield.label-color(rgba(blue, .87));
+    @include icon.leading-icon-color($focused-border);
+  }
+}
+
+.demo-shaped-text-field {
+  @include textfield.shape-radius(50%);
+}
+
+.demo-shaped-text-field--outline {
+  @include textfield.outline-shape-radius(50%);
+}
+
+.demo-card {
+  margin: auto;
+  padding: 10px;
+  width: 350px;
+}
+
+.demo-card-article {
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.demo-card-article-group-heading {
+  @include theme.property(color, text-secondary-on-light);
+
+  padding: 8px 16px;
+}
+
+.demo-card-article__title {
+  margin: 0 0 4px 0;
+}
+
+.demo-card-article__snippet {
+  @include theme.property(color, text-secondary-on-light);
+
+  margin: 0;
+}
+.centered-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1600px;
+}
+
+.form-field {
+  margin: 1em;
+}
+
+button {
+  margin: 1em;
+}

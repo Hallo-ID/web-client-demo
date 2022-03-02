@@ -3,12 +3,12 @@
   <mdc-top-app-bar style="position: unset" class="demo-top-app-bar-with-tabs">
     <mdc-top-app-bar-row>
       <mdc-top-app-bar-section align="start">
-        <button mdc-top-app-bar-nav-icon click.delegate="drawer.open = !drawer.open">
+        <button mdc-top-app-bar-nav-icon click.delegate="drawer.open = !drawer.open" if.bind="hasSession">
           <mdc-icon>menu</mdc-icon>
         </button>
         <div mdc-headline5>HalloID</div>
       </mdc-top-app-bar-section>
-      <mdc-top-app-bar-section end>
+      <mdc-top-app-bar-section end if.bind="hasSession">
         <mdc-icon mdc-top-app-bar-action-item>search</mdc-icon>
         <mdc-icon mdc-top-app-bar-action-item>notifications_none</mdc-icon>
         <mdc-icon mdc-top-app-bar-action-item click.delegate="profileMenu.open = !profileMenu.open">more_vert</mdc-icon>
@@ -23,13 +23,13 @@
         </div>
       </mdc-top-app-bar-section>
     </mdc-top-app-bar-row>
-    <mdc-top-app-bar-row>
-      <mdc-top-app-bar-section>
-        <mdc-tab-bar focus-on-activate.bind="false">
-          <mdc-tab repeat.for="tab of tabs" label.bind="tab.label" icon.bind="tab.icon"></mdc-tab>
-        </mdc-tab-bar>
-      </mdc-top-app-bar-section>
-    </mdc-top-app-bar-row>
+<!--    <mdc-top-app-bar-row>-->
+<!--      <mdc-top-app-bar-section>-->
+<!--        <mdc-tab-bar focus-on-activate.bind="false">-->
+<!--          <mdc-tab repeat.for="tab of tabs" label.bind="tab.label" icon.bind="tab.icon"></mdc-tab>-->
+<!--        </mdc-tab-bar>-->
+<!--      </mdc-top-app-bar-section>-->
+<!--    </mdc-top-app-bar-row>-->
   </mdc-top-app-bar>
 
   <div class="demo-drawer-app-content">

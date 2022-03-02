@@ -6,6 +6,7 @@ export function configure(aurelia: Aurelia): void {
     .standardConfiguration()
     // .plugin(PLATFORM.moduleName('@aurelia-mdc-web/all'))
     .plugin(PLATFORM.moduleName('@aurelia-mdc-web/top-app-bar'))
+    .plugin(PLATFORM.moduleName('@aurelia-mdc-web/text-field'))
     .plugin(PLATFORM.moduleName('@aurelia-mdc-web/all'))
     .feature('resources');
 

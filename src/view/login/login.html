@@ -1,0 +1,45 @@
+<template>
+  <require from="./login.css"></require>
+
+  <div class="centered-content">
+    <mdc-card class="demo-card" >
+      <div class="demo-card-article-group-heading" mdc-subtitle2>Login</div>
+      <mdc-list-divider></mdc-list-divider>
+
+      <div outlined class="centered-content">
+
+        <div class="form-field">
+          <mdc-text-field label="Username" outlined class="demo-shaped-text-field--outline"></mdc-text-field>
+        </div>
+
+        <div class="form-field" if.bind="showPasswordProcess">
+          <mdc-text-field label="Password" outlined type="password" class="demo-shaped-text-field--outline"></mdc-text-field>
+        </div>
+
+      </div>
+
+      <mdc-list-divider></mdc-list-divider>
+      <mdc-card-actions full-bleed >
+        <div class="centered-content">
+          <div if.bind="showPasswordProcess">
+            <button mdc-button outlined>Register</button>
+            <button mdc-button outlined>Login</button>
+          </div>
+          <button mdc-button unelevated class="demo-button-ink-color">
+            <mdc-icon>fingerprint</mdc-icon>Login with HalloID
+          </button>
+          <div class="centered-content">
+            <mdc-form-field>
+              <mdc-checkbox class="demo-checkbox--custom-stroke-and-fill"
+                            checked.bind="showPasswordProcess"></mdc-checkbox>
+              <label>I prefer to use a password</label>
+            </mdc-form-field>
+          </div>
+        </div>
+
+      </mdc-card-actions>
+    </mdc-card>
+  </div>
+
+
+</template>

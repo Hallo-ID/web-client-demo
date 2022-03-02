@@ -7,8 +7,8 @@
 @use '@material/theme';
 
 .demo-top-app-bar-with-tabs {
-  @include top-app-bar.fill-color(color-palette.$yellow-800);
-  @include top-app-bar.icon-ink-color(color-palette.$blue-900);
+  //@include top-app-bar.fill-color(color-palette.$yellow-800);
+  //@include top-app-bar.icon-ink-color(color-palette.$blue-900);
 
   .mdc-tab-bar {
     margin-top: 1em;
