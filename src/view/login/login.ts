@@ -1,18 +1,30 @@
-import { MdcSnackbarService } from '@aurelia-mdc-web/snackbar';
-import { autoinject } from 'aurelia-framework';
+import HalloIDWebSDK from "halloid-ts-sdk";
 
-@autoinject
 export class Login {
 
-  showPasswordProcess: boolean;
+  showPasswordProcessCheckbox: boolean;
+  renderHalloIDButton: boolean;
+  halloClient: HalloIDWebSDK
+  username: string;
+  password: string;
 
-  constructor(showPasswordProcess: boolean, private snackbar: MdcSnackbarService) {
-    this.showPasswordProcess = showPasswordProcess;
+  constructor() {
+    this.showPasswordProcessCheckbox = true;
+    this.renderHalloIDButton = false;
+    this.halloClient = new HalloIDWebSDK("", "");
   }
 
   attached() {
-    // this.checked = false;
-    this.showPasswordProcess = false;
+    if (this.halloClient.isBrowserSupported()) {
+      this.renderHalloIDButton = true;
+      this.showPasswordProcessCheckbox = false;
+    }
+  }
+
+  loginWithHalloID() {
+    this.halloClient.login(this.username).then(token => {
+      // Set Auth Token
+    });
   }
 
 }
