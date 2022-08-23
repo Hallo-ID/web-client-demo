@@ -37,7 +37,7 @@
     ]
   },
   "platform": {
-    "port": 9000,
+    "port": 8090,
     "host": "localhost",
     "open": false,
     "index": "index.html",
@@ -47,7 +47,7 @@
   "build": {
     "targets": [
       {
-        "port": 9000,
+        "port": 8090,
         "index": "index.html",
         "baseDir": ".",
         "output": "scripts"

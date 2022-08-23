@@ -22,6 +22,7 @@
     "aurelia-loader-nodejs": "^1.1.0",
     "aurelia-pal-nodejs": "^2.0.0",
     "aurelia-testing": "^1.0.0",
+    "aurelia-fetch-client": "^1.8.2",
     "autoprefixer": "^10.4.2",
     "buffer": "^6.0.3",
     "connect": "^3.7.0",

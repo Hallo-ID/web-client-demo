@@ -1,5 +1,7 @@
+@use '@material/theme/color-palette';
+
 @use '@material/theme' with (
-  $primary: #6200ee,
+  $primary: color-palette.$blue-700,
   $secondary: #faab1a,
   $background: #fff,
 );
