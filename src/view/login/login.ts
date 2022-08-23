@@ -23,10 +23,9 @@ export class Login {
   }
 
   attached() {
-    if (this.halloClient.isBrowserSupported()) {
-      this.renderHalloIDButton = true;
-      this.showPasswordProcessCheckbox = false;
-    }
+    // TODO verify browser support
+    this.renderHalloIDButton = true;
+    this.showPasswordProcessCheckbox = false;
   }
 
   public async loginWithHalloID() {
@@ -42,6 +41,7 @@ export class Login {
       .then((response) => {
         console.log("Success login")
         console.log(response)
+        this.processResponse(response.authorizationToken)
       })
       .catch(reason => {
         console.log("LO AGARRA EN ESTE CATCH")

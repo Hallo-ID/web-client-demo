@@ -6,7 +6,9 @@
         <button mdc-top-app-bar-nav-icon click.delegate="drawer.open = !drawer.open" if.bind="hasSession">
           <mdc-icon>menu</mdc-icon>
         </button>
-        <div mdc-headline5>HalloID</div>
+        <div mdc-headline5>
+          <img  width="25px" src="src/resources/img/halloID-logo.png">
+          HalloID</div>
       </mdc-top-app-bar-section>
       <mdc-top-app-bar-section end if.bind="hasSession">
         <mdc-icon mdc-top-app-bar-action-item>search</mdc-icon>

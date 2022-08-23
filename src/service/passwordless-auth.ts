@@ -41,7 +41,7 @@ export default class PasswordlessAuth {
       id: assertion.id,
       rawId: this.bufferEncode(rawId),
       type: assertion.type,
-      origin: "http://localhost:8090",
+      origin: window.location.origin,
       rpId: "localhost",
       sessionId: window.localStorage.getItem("HALLOID_SESSION"),
       response: {
@@ -102,7 +102,7 @@ export default class PasswordlessAuth {
         }
       },
       sessionId: window.localStorage.getItem("HALLOID_SESSION"),
-      origin: "http://localhost:8090",
+      origin: window.location.origin,
       rpId: "localhost",
       rawId: rawId
     }

@@ -1,12 +1,18 @@
+import {Router} from 'aurelia-router';
+import {inject} from "aurelia-dependency-injection";
+
+@inject(Router)
 export class TopBar {
 
   hasSession: boolean;
+  private router: any;
 
-  constructor(hasSession: boolean) {
-    this.hasSession = hasSession;
+  constructor(router) {
+    this.router = router;
   }
 
-  attached() {
-    this.hasSession = false;
+  activate() {
+    this.hasSession = (window.localStorage.getItem("HALLOID_AUTH") != undefined);
+    console.log(this.router)
   }
 }

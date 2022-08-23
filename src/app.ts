@@ -9,7 +9,7 @@ export class App {
     config.addAuthorizeStep(AuthorizeStep);
     config.map([
       {route: 'login', name: 'login', moduleId: 'view/login/login', title: 'Login'},
-      {route: ['', 'home'], name: 'home', moduleId: 'view/hello-world/hello-world', settings: { auth: true }},
+      {route: ['', 'home'], name: 'home', moduleId: 'view/hello-world/hello-world', nav: true, settings: { auth: true, data: { hasSession: true} }},
       // { route: 'users',            name: 'users',      moduleId: 'users/index', nav: true, title: 'Users' },
       // { route: 'users/:id/detail', name: 'userDetail', moduleId: 'users/detail' },
       // { route: 'files/*path',      name: 'files',      moduleId: 'files/index', nav: 0,    title: 'Files', href:'#files' }
