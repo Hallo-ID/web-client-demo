@@ -1,10 +1,11 @@
 <template>
   <require from="./hello-world.css"></require>
   <div mdc-headline4>${message}</div>
-  <h2>If you are seeing this message, you are authenticated ;)</h2>
+  <div mdc-headline5>If you are seeing this message, you are authenticated ;)</div>
   <br>
-  <h4> Client domain: ${domain}</h4>
-  <h4> This token is issued to: ${sub}</h4>
-  <h4> The user is verified: ${userVerified}</h4>
+  <div mdc-body1> Client domain: ${domain}</div>
+  <div mdc-body1> This token is issued to: ${sub}</div>
+  <div mdc-body1> The user is verified: ${userVerified}</div>
+  <br/>
   <button mdc-button raised click.delegate="register()">Logout</button>
 </template>

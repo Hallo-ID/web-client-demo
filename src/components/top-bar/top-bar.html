@@ -2,13 +2,14 @@
   <require from="./top-bar.css"></require>
   <mdc-top-app-bar style="position: unset" class="demo-top-app-bar-with-tabs">
     <mdc-top-app-bar-row>
-      <mdc-top-app-bar-section align="start">
+      <mdc-top-app-bar-section align="start" style="margin: auto; max-width: 1200px">
         <button mdc-top-app-bar-nav-icon click.delegate="drawer.open = !drawer.open" if.bind="hasSession">
           <mdc-icon>menu</mdc-icon>
         </button>
         <div mdc-headline5>
           <img  width="25px" src="src/resources/img/halloID-logo.png">
           HalloID</div>
+        <label style="font-family: monospace; color: cadetblue;margin-left: 5px;">Testrit</label>
       </mdc-top-app-bar-section>
       <mdc-top-app-bar-section end if.bind="hasSession">
         <mdc-icon mdc-top-app-bar-action-item>search</mdc-icon>
