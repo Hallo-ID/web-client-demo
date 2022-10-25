@@ -1,12 +1,9 @@
-import HalloIDWebSDK from "halloid-ts-sdk";
-import PasswordlessAuth from "../../service/passwordless-auth"
+import HalloIDWebSDK from "halloid-web-sdk";
 import { Router } from 'aurelia-router';
 import {inject} from "aurelia-dependency-injection";
 
 @inject(Router)
 export class Login {
-
-  private authentication: PasswordlessAuth;
   showPasswordProcessCheckbox: boolean;
   renderHalloIDButton: boolean;
   halloClient: HalloIDWebSDK
@@ -16,10 +13,9 @@ export class Login {
 
   constructor(router) {
     this.router = router;
-    this.authentication = new PasswordlessAuth();
     this.showPasswordProcessCheckbox = true;
     this.renderHalloIDButton = false;
-    this.halloClient = new HalloIDWebSDK("", "");
+    this.halloClient = new HalloIDWebSDK("CLIENT_URL", "CLIENT_ID");
   }
 
   attached() {
@@ -28,45 +24,20 @@ export class Login {
     this.showPasswordProcessCheckbox = false;
   }
 
+  // If user not exists, HalloID will call the register method
   public async loginWithHalloID() {
-    // this.halloClient.login(this.username).then(token => {
-    // Set Auth Token
-    // });
-    if (this.username === "") {
-      alert("please enter a username");
-      return;
-    }
-
-    await this.authentication.login(this.username)
-      .then((response) => {
-        console.log("Success login")
-        console.log(response)
-        this.processResponse(response.authorizationToken)
-      })
-      .catch(reason => {
-        console.log("LO AGARRA EN ESTE CATCH")
+    await this.halloClient.login(this.username, "Bearer 23423423423423432").then(response => {
+      this.processResponse(response.authorizationToken)
+    }).catch(reason => {
         console.log(reason)
         return this.registerWithHalloID();
-      })
+      });
   }
 
   public async registerWithHalloID() {
-    console.log("Called!")
-    if (this.username === "") {
-      alert("please enter a username");
-      return;
-    }
-
-    await this.authentication.register(this.username)
-      .then( response => {
-        console.log("ESTE VIENE DEL REGISTER")
-        console.log(response)
-        this.processResponse(response.authorizationToken)
-        // alert("Register success")
-      })
-      .catch(reason => {
-        console.log(reason)
-      })
+    await this.halloClient.registerUser(this.username, "Bearer 23423423423423432").then(response => {
+      this.processResponse(response.authorizationToken)
+    });
   }
 
   private async processResponse(token: string) {

@@ -30,7 +30,7 @@ export default class RestClient {
     return this.http.fetch(url, {
       method: "GET",
       headers: {
-        "clientId": "610ac52c-b75a-4b34-a529-575bef537861",
+        "clientId": "2571a4ad-47a8-4300-a018-3b5a9339718b",
         "Authorization": "Bearer 1d2f5gg4d5"
       }
     })
@@ -44,7 +44,7 @@ export default class RestClient {
   async post(url: string, body: any): Promise<any> {
     return this.http.fetch(url, {
       headers: {
-        "clientId": "610ac52c-b75a-4b34-a529-575bef537861",
+        "clientId": "2571a4ad-47a8-4300-a018-3b5a9339718b",
         "Authorization": "Bearer 1d2f5gg4d5"
       },
       method: 'post',

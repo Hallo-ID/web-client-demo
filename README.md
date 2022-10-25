@@ -1,19 +1,23 @@
-# Web Client
+# HalloID Web Client Demo
+
+Note: This is a typical web application used to show how to integrate [HalloID 
+Web SDK](https://www.npmjs.com/package/halloid-web-sdk) in the source code.
 
 This project is bootstrapped by [aurelia-cli](https://github.com/aurelia/cli).
 
-For more information, go to https://aurelia.io/docs/cli/cli-bundler
+For more information, go to https://aurelia.io/docs/cli/cli-bundler. 
 
-## Material Web Components
+## Configure client
+To be able to login with HalloID, you must set your `CLIENT_URL` and `CLIENT_ID` 
+in the `HalloIDWebSDK` constructor ([login service](src/view/login/login.ts))
 
-This projects uses 
-[Material Web Components](https://material-components.github.io/material-components-web-catalog/#/) as 
-template standard for HalloID platforms. The integration is made with the library 
-[Aurelia MDC](https://aurelia-ui-toolkits.github.io/aurelia-mdc-web/#/). 
+```typescript
+this.halloClient = new HalloIDWebSDK("CLIENT_URL", "CLIENT_ID");
+```
 
 ## Run dev app
 
-Run `au run`, then open `http://localhost:9000`
+Run `au run`, then open `http://localhost:8090`
 
 To open browser automatically, do `au run --open`.
 
@@ -48,6 +52,13 @@ if you want to bring up an instance on your machine run:
 to stop the previously started instance:
 
 `yarn docker:stop` or `npm run docker:stop`
+
+## Material Web Components
+
+This projects uses
+[Material Web Components](https://material-components.github.io/material-components-web-catalog/#/) as
+template standard for HalloID platforms. The integration is made with the library
+[Aurelia MDC](https://aurelia-ui-toolkits.github.io/aurelia-mdc-web/#/).
 
 ## Creating new Projects
 

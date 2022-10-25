@@ -1,4 +1,3 @@
-import HalloIDWebSDK from "halloid-ts-sdk";
 import { Router } from 'aurelia-router';
 import {inject} from "aurelia-dependency-injection";
 
@@ -24,9 +23,7 @@ export class HelloWorld {
     this.userVerified = user.userVerified
   }
 
-  private client: HalloIDWebSDK = new HalloIDWebSDK("https://www.cevicheria.halloid.com", "132465789");
-
-  public async register() {
+  public async logout() {
     window.localStorage.removeItem("HALLOID_AUTH")
     this.router.navigateToRoute(
       this.router.currentInstruction.config.name,

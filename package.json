@@ -11,7 +11,7 @@
     "@aurelia-mdc-web/all": "^8.0.3",
     "aurelia-animator-css": "^1.0.4",
     "aurelia-bootstrapper": "^2.3.3",
-    "halloid-ts-sdk": "^1.0.5"
+    "halloid-web-sdk": "^1.0.16"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
