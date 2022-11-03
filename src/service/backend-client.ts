@@ -1,12 +1,13 @@
 import {HttpClient, json} from 'aurelia-fetch-client';
 
-export default class RestClient {
+export default class BackendClient {
 
   private http: any;
+  private baseUrl: string;
 
   constructor() {
     this.http = new HttpClient();
-    const baseUrl = 'http://localhost:10000/v1/auth';
+    const baseUrl = 'http://localhost:8099';
 
     this.http.configure(config => {
       config.withBaseUrl(baseUrl)
@@ -26,13 +27,9 @@ export default class RestClient {
     })
   }
 
-  async get(url: string): Promise<any> {
-    return this.http.fetch(url, {
+  async getServiceToken(): Promise<string> {
+    return this.http.fetch(this.baseUrl + '/auth/token', {
       method: "GET",
-      headers: {
-        "clientId": "2571a4ad-47a8-4300-a018-3b5a9339718b",
-        "Authorization": "Bearer 1d2f5gg4d5"
-      }
     })
       .then(response => response.json())
       .catch(error => {
@@ -41,18 +38,14 @@ export default class RestClient {
       });
   }
 
-  async post(url: string, body: any): Promise<any> {
-    return this.http.fetch(url, {
-      headers: {
-        "clientId": "2571a4ad-47a8-4300-a018-3b5a9339718b",
-        "Authorization": "Bearer 1d2f5gg4d5"
-      },
-      method: 'post',
-      body: json(body),
-    }).then(data => data.json())
+  async validateToken(token: string): Promise<any> {
+    return this.http.fetch(this.baseUrl + '/auth/token/' + token + '/verify', {
+      method: "GET",
+    })
+      .then(response => response.json())
       .catch(error => {
-        console.log('Error in POST request.');
-        throw error
+        console.log('Error retrieving data.');
+        throw error;
       });
   }
 
