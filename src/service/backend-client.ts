@@ -28,25 +28,26 @@ export default class BackendClient {
   }
 
   async getServiceToken(): Promise<string> {
-    return this.http.fetch(this.baseUrl + '/auth/token', {
+    return this.http.fetch('/auth/token', {
+    // return this.http.fetch(`http://localhost:8099/auth/token`, {
       method: "GET",
+      mode: "no-cors",
     })
-      .then(response => response.json())
-      .catch(error => {
-        console.log('Error retrieving data.');
-        throw error;
-      });
+    .catch(error => {
+      console.log('Error retrieving data.');
+      throw error;
+    });
   }
 
   async validateToken(token: string): Promise<any> {
-    return this.http.fetch(this.baseUrl + '/auth/token/' + token + '/verify', {
+    return this.http.fetch('/auth/token/' + token + '/verify', {
       method: "GET",
     })
-      .then(response => response.json())
-      .catch(error => {
-        console.log('Error retrieving data.');
-        throw error;
-      });
+    .then(response => response.json())
+    .catch(error => {
+      console.log('Error retrieving data.');
+      throw error;
+    });
   }
 
 }

@@ -29,11 +29,15 @@ export class Login {
 
   // If user not exists, HalloID will call the register method
   public async loginWithHalloID() {
-    await this.halloClient.login(this.username, "Bearer 23423423423423432").then(response => {
-      this.processResponse(response.authorizationToken)
-    }).catch(reason => {
-        console.log(reason)
-        return this.registerWithHalloID();
+    await this.generateServiceToken()
+      .then(serviceToken => {
+        return this.halloClient.login(this.username, serviceToken)
+      })
+      .then(response => {
+        this.processResponse(response.authorizationToken)
+      })
+      .catch(reason => {
+          return this.registerWithHalloID();
       });
   }
 
@@ -45,9 +49,6 @@ export class Login {
       .then(response => {
         this.processResponse(response.authorizationToken)
       });
-    // await this.halloClient.registerUser(this.username, serviceToken).then(response => {
-    //   this.processResponse(response.authorizationToken)
-    // });
   }
 
   private async processResponse(token: string) {
