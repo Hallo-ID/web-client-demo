@@ -11,9 +11,9 @@ export default class BackendClient {
 
     this.http.configure(config => {
       config.withBaseUrl(baseUrl)
-        .withDefaults({
-          credentials: 'include' // Valid values; omit, same-origin and include
-        })
+        // .withDefaults({
+        //   credentials: 'omit' // Valid values; omit, same-origin and include
+        // })
         .withInterceptor({
           request(request) {
             console.log(`Requesting ${request.method} ${request.url}`);
@@ -21,17 +21,15 @@ export default class BackendClient {
           },
           response(response) {
             console.log(`Received ${response.status} ${response.url}`);
-            return response; // you can return a modified Response
+            return response.json(); // you can return a modified Response
           }
         });
     })
   }
 
-  async getServiceToken(): Promise<string> {
+  async getServiceToken(): Promise<any> {
     return this.http.fetch('/auth/token', {
-    // return this.http.fetch(`http://localhost:8099/auth/token`, {
       method: "GET",
-      mode: "no-cors",
     })
     .catch(error => {
       console.log('Error retrieving data.');
@@ -43,7 +41,6 @@ export default class BackendClient {
     return this.http.fetch('/auth/token/' + token + '/verify', {
       method: "GET",
     })
-    .then(response => response.json())
     .catch(error => {
       console.log('Error retrieving data.');
       throw error;

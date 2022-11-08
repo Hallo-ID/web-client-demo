@@ -31,7 +31,7 @@ export class Login {
   public async loginWithHalloID() {
     await this.generateServiceToken()
       .then(serviceToken => {
-        return this.halloClient.login(this.username, serviceToken)
+        return this.halloClient.login(this.username, serviceToken.toString())
       })
       .then(response => {
         this.processResponse(response.authorizationToken)
@@ -44,20 +44,32 @@ export class Login {
   public async registerWithHalloID() {
     await this.generateServiceToken()
       .then(serviceToken => {
-        return this.halloClient.registerUser(this.username, serviceToken)
+        return this.halloClient.registerUser(this.username, serviceToken.toString())
       })
       .then(response => {
-        this.processResponse(response.authorizationToken)
+        this.processResponse(response.authenticationToken)
       });
   }
 
   private async processResponse(token: string) {
-    window.localStorage.setItem("HALLOID_AUTH", token);
-    this.router.navigate('home')
+    await this.validateAuthenticationToken(token)
+      .then(response => {
+        console.log(response)
+        window.localStorage.setItem("HALLOID_AUTH", token);
+        this.router.navigate('home')
+      })
   }
 
-  private async generateServiceToken(): Promise<string> {
-    return this.backendClient.getServiceToken();
+  private async validateAuthenticationToken(token: string): Promise<any> {
+    return this.backendClient.validateToken(token).then(response => {
+      return response.token;
+    });
+  }
+
+  private async generateServiceToken(): Promise<any> {
+    return this.backendClient.getServiceToken().then(response => {
+      return response.token;
+    });
   }
 
 }
