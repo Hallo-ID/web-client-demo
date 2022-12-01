@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  halloid-authenticator:
+    container_name: halloid-authenticator
+    image: halloid/halloid-authenticator:latest
+    pull_policy: always
+    ports:
+      - "8081:8081"
+
+  halloid-controller:
+    container_name: halloid-controller
+    image: halloid/halloid-controller:latest
+    pull_policy: always
+    ports:
+      - "10000:10000"
+    environment:
+      - FIDO_AUTHENTICATOR_URL=http://halloid-authenticator:8081
+      - ALLOWED_ORIGIN=http://localhost:3001
+    depends_on:
+      - halloid-authenticator
+
+  halloid-console:
+    container_name: halloid-console
+    image: halloid/halloid-console:latest
+    pull_policy: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - halloid-controller

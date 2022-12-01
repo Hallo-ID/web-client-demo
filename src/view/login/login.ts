@@ -18,7 +18,7 @@ export class Login {
     this.showPasswordProcessCheckbox = true;
     this.renderHalloIDButton = false;
     this.backendClient = new BackendClient();
-    this.halloClient = new HalloIDWebSDK("CLIENT_URL", "CLIENT_ID");
+    this.halloClient = new HalloIDWebSDK("http://localhost:10000", "c1f86b69-e7fc-4191-965a-90744fd7702e");
   }
 
   attached() {
@@ -27,29 +27,47 @@ export class Login {
     this.showPasswordProcessCheckbox = false;
   }
 
-  // If user not exists, HalloID will call the register method
   public async loginWithHalloID() {
-    await this.generateServiceToken()
-      .then(serviceToken => {
-        return this.halloClient.login(this.username, serviceToken.toString())
-      })
+    await this.halloClient.login(this.username)
       .then(response => {
         this.processResponse(response.authorizationToken)
       })
       .catch(reason => {
-          return this.registerWithHalloID();
+        return this.registerWithHalloID();
       });
   }
 
+  // If user not exists, HalloID will call the register method
+  // public async loginWithHalloID() {
+  //   await this.generateServiceToken()
+  //     .then(serviceToken => {
+  //       return this.halloClient.login(this.username, serviceToken.toString())
+  //     })
+  //     .then(response => {
+  //       this.processResponse(response.authorizationToken)
+  //     })
+  //     .catch(reason => {
+  //         return this.registerWithHalloID();
+  //     });
+  // }
+
   public async registerWithHalloID() {
-    await this.generateServiceToken()
-      .then(serviceToken => {
-        return this.halloClient.registerUser(this.username, serviceToken.toString())
-      })
+    await this.halloClient.registerUser(this.username)
       .then(response => {
         this.processResponse(response.authenticationToken)
       });
   }
+
+
+  // public async registerWithHalloID() {
+  //   await this.generateServiceToken()
+  //     .then(serviceToken => {
+  //       return this.halloClient.registerUser(this.username, serviceToken.toString())
+  //     })
+  //     .then(response => {
+  //       this.processResponse(response.authenticationToken)
+  //     });
+  // }
 
   private async processResponse(token: string) {
     await this.validateAuthenticationToken(token)
